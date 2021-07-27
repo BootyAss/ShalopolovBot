@@ -1,7 +1,7 @@
 from math import floor
 from random import random
 from telebot import types, TeleBot
-from descs import data, startValues
+from descs import data, startValues, pA
 
 bot = TeleBot(token='1924703853:AAHglk4Jw8ilRx4MYsLpr3FC1POnYRuj00w')
 
@@ -39,7 +39,7 @@ def parse(msg):
             values = [int(x[:-1]) for x in file.readlines()]
 
         if len(values) == 0:
-            startValues = [i+1 for i in range(62)]
+            startValues = [i+1 for i in range(pA)]
             with open(f'{chat.id}.txt', 'w') as file:
                 for i in startValues:
                     file.write(str(i)+'\n')
@@ -60,14 +60,16 @@ def parse(msg):
                 desc = item['desc']
                 break
 
+        # bot.send_photo(chat.id,
+        #                photo=open(f'./data/photo' +
+        #                           '{:03d}'.format(photo_id) + '.jpeg', 'rb')
+        #                )
+
         bot.send_photo(chat.id,
-                       photo=open(f'./data/photo' +
-                                  '{:03d}'.format(photo_id) + '.jpeg', 'rb')
+                       photo='https://raw.githubusercontent.com/BootyAss/ShalopolovBot/master/data/photo' +
+                       '{:03d}'.format(photo_id) + '.jpeg'
                        )
-        bot.send_photo(chat.id,
-                       photo=open(f'./data/photo' +
-                                  '{:03d}'.format(photo_id) + '.jpeg', 'rb')
-                       )
+
         if desc:
             bot.send_message(chat.id,
                              text=f'{desc}')
