@@ -128,3 +128,5 @@ data = [
         "desc": "Это просто так"
     }
 ]
+
+startValues = [i+1 for i in range(len(data))]

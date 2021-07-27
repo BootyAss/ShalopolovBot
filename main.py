@@ -64,6 +64,10 @@ def parse(msg):
                        photo=open(f'./data/photo' +
                                   '{:03d}'.format(photo_id) + '.jpeg', 'rb')
                        )
+        bot.send_photo(chat.id,
+                       photo=open(f'./data/photo' +
+                                  '{:03d}'.format(photo_id) + '.jpeg', 'rb')
+                       )
         if desc:
             bot.send_message(chat.id,
                              text=f'{desc}')
